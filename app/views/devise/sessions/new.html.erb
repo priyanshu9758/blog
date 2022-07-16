@@ -1,0 +1,50 @@
+
+<section class="btn-design">
+  <div class="logo" >
+    <a href="http://localhost:3000/homepage"><img src="<%=image_path("Vector.png") %>" alt=""></a>
+<!--    <a href="http://localhost:3000/homepage"><img src="<%#=image_path("Vector.png") %>" alt=""></a>-->
+    <h4 class="maze-8">Maze</h4>
+  </div>
+  <HR class="line">
+
+  <div class="checkpoint">
+
+    <div class="register-all">
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="both-field">
+          <div class="heading-4">
+        <h3 style="color:white;">Login</h3>
+          </div>
+
+  <div class="email-label">
+    <p class="f-email"><%= f.label :email %><br /></p>
+    <p class="label-2"> <%= f.email_field :email, autofocus: true, autocomplete: "email" %></p>
+  </div>
+
+  <div class="field-password">
+    <p class="f-password"> <%= f.label :password %><br /></p>
+    <p class="field-3"><%= f.password_field :password, autocomplete: "current-password" %></p>
+  </div>
+    </div>
+
+  <% if devise_mapping.rememberable? %>
+<!--    <div class="field-remember">-->
+      <%#= f.check_box :remember_me %>
+      <%#= f.label :remember_me %>
+<!--    </div>-->
+  <% end %>
+        <%#= render "devise/shared/links" %>
+
+  <div class="login-submit">
+    <p class="submit-nav">  <%= f.submit "Log in" %></p>
+  </div>
+        <div class="shared-links">
+        <%= render "devise/shared/links" %>
+        </div>
+<% end %>
+    </div>
+
+  </div>
+</section>
+</section>

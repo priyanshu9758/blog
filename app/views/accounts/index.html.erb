@@ -1,0 +1,199 @@
+<section class="all-design">
+  <section class="container">
+    <nav class="navbar">
+      <div class="image-maze">
+        <div class="img-1">
+          <%= image_tag "Vector.png",class:''%>
+        </div>
+        <div class="maze-man">
+          <h3>Maze</h3>
+        </div>
+      </div>
+
+      <div class="search-bar-2">
+
+     <h3 class="manage-2">User management</h3>
+
+      </div>
+      <div class="full-image-1">
+
+
+        <div class="name-image-1">
+
+          <%= image_tag "Rectangle 14 (1).png",class:''%>
+          <h3 class="name-2"> <%=current_account.first_name%></h3>
+
+
+        </div>
+      </div>
+    </nav>
+  </section>
+  <!--article-area-->
+
+  <nav class="check-design">
+    <div class="profile-3">
+      <div class="feed-1">
+        <button>
+          <p class="feed-sub"> <img src="<%=image_path("Vector (20).png") %>" alt="" class="" /></p>
+          <a href="http://localhost:3000/"><h3>Feed</h3></a></button>
+      </div>
+
+      <div class="profile-1">
+        <button>
+          <p class="profile-sub">  <img src="<%=image_path("Vector (12).png") %>" alt="" class="" /></p>
+          <h3 class="heading-8">  <a href=#profile>Profile</a></h3>
+        </button>
+      </div>
+      <div class="manage-1">
+        <button>
+          <p class="manage-sub">  <img src="<%=image_path("Vector (16).png") %>" alt="" class="" /></p>
+          <h3 class="heading-9"><a href="http://localhost:3000/accounts">Manage users</a></h3>
+        </button>
+      </div>
+      <div class="manage-2">
+        <button>
+          <p class="reports-sub">  <img src="<%=image_path("Vector (24).png") %>" alt="" class="" /></p>
+          <h3 class="heading-9"><a href="http://localhost:3000/accounts_reports_all">Reports</a></h3>
+        </button>
+      </div>
+
+      <div class="log-out">
+        <button>
+          <p class="log-out-sub"> <img src="<%=image_path("Vector (11).png") %>" alt="" class="" /></p>
+
+          <h3><%=link_to "log out", destroy_account_session_url ,method: :delete %></h3>
+        </button>
+      </div>
+    </div>
+
+
+    <section class="design-8">
+      <div class="user-3">
+      <h3 class="user-2">List of  users</h3>
+        <div class="upload-2">
+        <button>
+          <p class="upload-1"> <img src="<%=image_path("Vector (26).png") %>" alt="" class="" /></p>
+<!--       <a href="http://localhost:3000/accounts/upload">Upload user</a>-->
+          <%=link_to "upload user", upload_url %>
+
+        </button>
+        </div>
+
+
+      <div class="user-1">
+        <button type="button"
+                <%#= image_tag "Vector (18).png",class:''%>
+                class="btn btn-primary"><a href="http://localhost:3000/accounts/new">Create user</a></button>
+
+<!--        <%#= image_tag "Vector (18).png",class:''%> <h3 class="create-user"><a href="http://localhost:3000/accounts/new">Create user</a></h3>-->
+
+      </div>
+      </div>
+      <div class="show-1">
+ <%@accounts.each do |acc|%>
+        <% if acc.roles.first.name=="user" %>
+            <div class="account-1">
+              <div class="image-2">
+              <%= image_tag "Vector.png"%>
+              </div>
+
+         <div class="first-name-1">
+           <%if acc.hidden==true %>
+           <h3 class="style-green", style="color: orangered;">&#8226</h3>
+           <%end %>
+           <%if acc.hidden==false %>
+             <h3 class="style-green", style="color: lawngreen;">&#8226</h3>
+             <% end %>
+           <p>
+      <%=acc.first_name %></p>
+           <p class="last-2"> <%=acc.last_name %></p>
+         </div>
+              <div class="phone-1">
+        <%=acc.Phone_number %>
+              </div>
+              <div class="email-1">
+        <%=acc.email %>
+              </div>
+
+
+              <div class="activate">
+          <%if acc.hidden==true %>
+<div class="deactivate">
+    <button >
+
+            <a href="/accounts/activate/<%=acc.id%>">Activate</a>
+    </button>
+</div>
+
+  <%end %>
+            <%if acc.hidden==false %>
+
+                  <button>
+            <a href="/accounts/activate/<%=acc.id%>">Deactivate</a>
+
+             </button>
+            <%end %><br>
+              </div>
+
+              <h5 class="dot">...</h5>
+            </div>
+<% end %>
+        <%end %>
+
+      </div>
+
+        </section>
+  </nav>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

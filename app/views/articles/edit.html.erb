@@ -1,0 +1,41 @@
+<section class="all-design">
+  <section class="container">
+    <nav class="navbar">
+      <div class="image-maze">
+        <div class="img-1">
+          <%= image_tag "Vector.png",class:''%>
+        </div>
+        <div class="maze-man">
+          <h3 class="maze-4">Maze</h3>
+        </div>
+      </div>
+
+      <div class="search-bar">
+
+        <button type="button" class="btn btn-default btn-sm">
+          <span class="glyphicon glyphicon-search"></span> <p class="search-3">Search for something here...</p>
+        </button>
+
+      </div>
+      <div class="full-image">
+
+
+        <div class="name-image">
+
+          <%= image_tag "Rectangle 14 (1).png",class:''%>
+          <p class="admin-name"> <%=current_account.roles.first.name%></p>
+          <h3 class="name-1"> <%=current_account.first_name%></h3>
+        </div>
+
+
+      </div>
+
+    </nav>
+  </section>
+
+<div class="design-11">
+  <h1>Edit Post</h1>
+
+<%= render "form", article: @article %>
+</div>
+</section>

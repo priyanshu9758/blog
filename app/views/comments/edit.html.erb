@@ -1,0 +1,12 @@
+<%= form_with model: [ @article, @comment ] do |form| %>
+
+  <p class="comment-form-input-new">
+<%= form.text_field :body %>
+  </p>
+  <p class="comment-btn-new">
+<%= form.submit "create"%>
+  </p>
+<% end %>
+
+
+

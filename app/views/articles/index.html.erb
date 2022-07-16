@@ -1,0 +1,228 @@
+<section class="all-design">
+<section class="container">
+<nav class="navbar">
+  <div class="image-maze">
+      <div class="img-1">
+    <%= image_tag "Vector.png",class:''%>
+      </div>
+<div class="maze-man">
+  <h3 class="maze-4">Maze</h3>
+</div>
+  </div>
+  <div class="search-bar">
+  <%=search_form_for @q do |f| %>
+<!--      <button type="button" class="btn btn-default btn-sm">-->
+<!--        <span class="glyphicon glyphicon-search"></span> <p class="search-3">Search for something here...</p-->
+
+
+        <%=f.search_field :body_cont, placeholder:"Search for something here..." %>
+    <% end %>
+  </div>
+  <div class="full-image">
+    <div class="name-image">
+
+      <%= image_tag "Rectangle 14 (1).png",class:''%>
+      <p class="admin-name"> <%=current_account.roles.first.name%></p>
+      <h3 class="name-1"> <%=current_account.first_name%></h3>
+    </div>
+  </div>
+
+</nav>
+</section>
+  <!--article-area-->
+
+  <nav class="check-design">
+    <div class="profile-2">
+      <div class="feed-1">
+        <button>
+        <p class="feed-sub"> <img src="<%=image_path("Vector (20).png") %>" alt="" class="" /></p>
+          <a href="http://localhost:3000/"><h3>Feed</h3></a></button>
+      </div>
+
+      <div class="profile-1">
+        <button>
+        <p class="profile-sub">  <img src="<%=image_path("Vector (12).png") %>" alt="" class="" /></p>
+        <h3 class="heading-8">  <a href=#profile>Profile</a></h3>
+        </button>
+      </div>
+      <% if current_account.roles.first.name=="admin" %>
+      <div class="manage-1">
+        <button>
+        <p class="manage-sub">  <img src="<%=image_path("Vector (16).png") %>" alt="" class="" /></p>
+        <h3 class="heading-9"><a href="http://localhost:3000/accounts">Manage users</a></h3>
+        </button>
+      </div>
+<% end %>
+      <div class="manage-2">
+        <button>
+          <p class="reports-sub">  <img src="<%=image_path("Vector (24).png") %>" alt="" class="" /></p>
+          <h3 class="heading-9"><a href="http://localhost:3000/accounts_reports_all">Reports</a></h3>
+        </button>
+      </div>
+
+      <div class="log-out">
+        <button>
+        <p class="log-out-sub"> <img src="<%=image_path("Vector (11).png") %>" alt="" class="" /></p>
+
+          <h3 class="logout-1" ><%=link_to "log out", destroy_account_session_url ,method: :delete %></a></h3>
+        </button>
+      </div>
+    </div>
+    <section class="design">
+  <div  class="live-videos">
+    <div class="render-form">
+   <%= render "form" %>
+
+    </div>
+   <ul>
+     <%= image_tag "Vector (4).png",class:''%> <li>Live Video</li>
+     <%= image_tag "Vector (5).png",class:''%> <li>Photo/Video</li>
+     <%= image_tag "Vector (6).png",class:''%> <li>feeling</li>
+   </ul>
+  </div>
+        <hr class="new-line">
+
+<!--  correct-->
+  <div class="all-articles">
+
+        <% @articles.each do |article| %>
+
+
+<!--for button post-->
+<!--      for dropdown button-->
+
+     <span style="float: right;">
+  <div class="dropdown-container" tabindex="-1">
+    <div class="three-dots"></div>
+    <div class="dropdown">
+
+<!--      <div><a><%#= link_to 'Destroy', article_path(article), method: :delete,  data: {confirm: "Are you sure?"}  %></a></div>-->
+      <%= link_to 'Edit', edit_article_path(article) %><br>
+      <%= link_to 'Destroy', article_path(article), method: :delete,  data: {confirm: "Are you sure?"}  %>
+    </div>
+  </div>
+</span>
+
+
+<!--for every article-->
+      <div class="drop-give">
+           <div class="every-article">
+           <div class="article-1">
+             <%= image_tag "Vector.png"%>  <a href="http://localhost:3000/articles/<%=article.id%>"><%=article.title %></a>
+
+           </div>
+           </div>
+           <div class="time-check">
+       <%= time_ago_in_words(article.created_at) %> ago
+           </div>
+           <div class="body-1">
+              <h6><%= article.body %></h6>
+           </div>
+           </div>
+
+<!--           for every article-->
+      <div class="lenght-increment">
+      <h6> <%=article.likes.length %>Likes</h6>
+      <h6>.<%=article.comments.length %>comment</h6>
+      </div>
+      <%#= button_to "like", likes_path, params: {like: {article_id: article.id}}, method: :post, class: "like-btn1" %>
+
+      <div class="like-comment">
+      <ul class="form-ul">
+
+     <li class="all-li"><%= image_tag "Vector (2).png",class:''%>  <%= button_to "like", likes_path, params: {like: {article_id: article.id}}, method: :post, class: "like-btn1" %>
+     </li>
+
+        <li><%= image_tag "Vector (3).png",class:''%><a  href="http://localhost:3000/articles/<%=article.id%>">Comments</a></li>
+      </ul>
+             </div>
+ <div class="render">
+      <%comment=Comment.where(article_id:article.id)%>
+
+      <%= render partial: 'comments/form', locals: {article: article} %>
+   <p class="comment-1"> <%= image_tag "Vector.png"%>  <%=comment.present? ?  comment.last.commenter : '' %><br></p>
+   <div class="every-comment">
+     <p class="present">    <%=comment.present? ?  comment.last.body : '' %></p>
+      <%=  comment.present?  ? time_ago_in_words(comment.last.created_at) : '' %>
+   </div>
+   <hr class="new-line"></div>
+  <% end %>
+
+    </div>
+  </div>
+
+    </section>
+
+    <ul class="name-4">
+
+    <% if current_account.roles.first.name=="admin" %>
+        <h5 ><b>Users List </b> </h5>
+      <%@accounts.each do |acc| %>
+
+        <% unless acc.articles.blank? %>
+            <div class="image-action">
+            <%= image_tag "Vector.png"%>
+
+            <li class="name-8">   <h5 class="first-3"><%=acc.first_name %></h5> </li>
+        <% end %>
+          </div>
+
+      <% end %>
+
+      <%end %>
+<!--  article body comment finish-->
+    </ul>
+  </nav>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

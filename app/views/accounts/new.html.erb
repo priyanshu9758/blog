@@ -1,0 +1,176 @@
+<section class="all-design">
+  <section class="container">
+    <nav class="navbar">
+      <div class="image-maze">
+        <div class="img-1">
+          <a href="http://localhost:3000/"><%= image_tag "Vector.png",class:''%></a>
+        </div>
+        <div class="maze-man">
+          <h3>Maze</h3>
+        </div>
+      </div>
+
+      <div class="search-bar-2">
+
+        <h3 class="manage-2">User management</h3>
+
+      </div>
+      <div class="full-image-1">
+
+
+        <div class="name-image-1">
+
+          <%= image_tag "Rectangle 14 (1).png",class:''%>
+          <h3 class="name-2"> <%=current_account.first_name%></h3>
+        </div>
+      </div>
+    </nav>
+  </section>
+
+
+  <!--article-area-->
+
+  <nav class="check-design">
+    <div class="profile-3">
+      <div class="feed-1">
+        <button>
+          <p class="feed-sub"> <img src="<%=image_path("Vector (20).png") %>" alt="" class="" /></p>
+          <a href="http://localhost:3000/"><h3>Feed</h3></a></button>
+      </div>
+
+      <div class="profile-1">
+        <button>
+          <p class="profile-sub">  <img src="<%=image_path("Vector (12).png") %>" alt="" class="" /></p>
+          <h3 class="heading-8">  <a href=#profile>Profile</a></h3>
+        </button>
+      </div>
+      <div class="manage-1">
+        <button>
+          <p class="manage-sub">  <img src="<%=image_path("Vector (16).png") %>" alt="" class="" /></p>
+          <h3 class="heading-9"><a href="http://localhost:3000/accounts">Manage users</a></h3>
+        </button>
+      </div>
+      <div class="manage-2">
+        <button>
+          <p class="reports-sub">  <img src="<%=image_path("Vector (24).png") %>" alt="" class="" /></p>
+          <h3 class="heading-9"><a href="http://localhost:3000/accounts_reports_all">Reports</a></h3>
+        </button>
+      </div>
+
+      <div class="log-out">
+        <button>
+          <p class="log-out-sub"> <img src="<%=image_path("Vector (11).png") %>" alt="" class="" /></p>
+
+          <h3><%=link_to "log out", destroy_account_session_url ,method: :delete %></h3>
+        </button>
+      </div>
+    </div>
+    <section class="design-9">
+<h3 class="user-4" > Add Users</h3>
+
+
+      <%= form_with url: "/accounts/create_acc", method: :post do |f| %>
+<div class="first-4">
+  <div class="first-5">
+        <%= f.text_field :first_name, autofocus: true,placeholder:f, autocomplete: "first_name" %>
+  </div>
+     <div class="last-1">
+          <%= f.text_field :last_name,placeholder:f, autofocus: true, autocomplete: "last_name" %>
+     </div>
+</div>
+<div class="email-3">
+  <div class="email-4">
+            <%= f.email_field :email,placeholder:f, autofocus: true, autocomplete: "email" %>
+  </div>
+<div class="phone-2">
+            <%= f.phone_field :Phone_number,placeholder:f, autofocus: true, autocomplete: "Phone_number",maxlength:10%>
+</div>
+</div>
+<div class="minimum">
+            <% if @minimum_password_length %>
+              <em>(<%= @minimum_password_length %> characters minimum)</em>
+            <% end %><br />
+  <div class="password-1">
+            <%= f.password_field :password,placeholder:f, autocomplete: "new-password" %>
+  </div>
+<div class="final-1">
+            <%= f.password_field :password_confirmation,placeholder:f, autocomplete: "new-password" %>
+</div>
+</div>
+        <div class="assign-1">
+          <div class="assign-2">
+              <%= f.label :Assign_role  %>
+          </div>
+<!--          <div class="admin-1">-->
+        <%#=f.label :admin, "admin" %>
+        <%#=f.radio_button :roles,'admin' %>
+<!--          </div>-->
+          <div class="user-5">
+
+        <%=f.label :user, "user" %>
+<div class="role-1">
+            <%=f.radio_button :roles,'user' ,checked:true %>
+</div>
+          </div>
+        </div>
+        <div class="user-create">
+
+        <%=f.submit :create_user,value:'Create user' %>
+            <% end %>
+      </div>
+    </section>
+
+  </nav>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

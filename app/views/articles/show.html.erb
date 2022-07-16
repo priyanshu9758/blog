@@ -1,0 +1,152 @@
+<section class="all-design">
+  <section class="method-every">
+    <nav class="navbar">
+      <div class="image-maze">
+        <div class="img-1">
+          <a href="http://localhost:3000/"><%= image_tag "Vector.png",class:''%></a>
+        </div>
+        <div class="maze-man">
+          <h3 class="maze-4">Maze</h3>
+        </div>
+      </div>
+
+      <div class="search-bar">
+
+        <button type="button" class="btn btn-default btn-sm">
+          <span class="glyphicon glyphicon-search"></span> <p class="search-3">Search for something here...</p>
+        </button>
+
+      </div>
+      <div class="full-image">
+
+
+        <div class="name-image">
+
+          <%= image_tag "Rectangle 14 (1).png",class:''%>
+          <p class="admin-name"> <%=current_account.roles.first.name%></p>
+          <h3 class="name-1"> <%=current_account.first_name%></h3>
+
+
+
+        </div>
+      </div>
+    </nav>
+
+
+  </section>
+
+
+  <nav class="check-design">
+    <div class="profile-2">
+      <div class="feed-1">
+        <button>
+          <p class="feed-sub"> <img src="<%=image_path("Vector (20).png") %>" alt="" class="" /></p>
+          <a href="http://localhost:3000/"><h3>Feed</h3></a></button>
+      </div>
+
+      <div class="profile-1">
+        <button>
+          <p class="profile-sub">  <img src="<%=image_path("Vector (12).png") %>" alt="" class="" /></p>
+          <h3 class="heading-8">  <a href=#profile>Profile</a></h3>
+        </button>
+      </div>
+      <% if current_account.roles.first.name=="admin" %>
+      <div class="manage-1">
+        <button>
+          <p class="manage-sub">  <img src="<%=image_path("Vector (16).png") %>" alt="" class="" /></p>
+          <h3 class="heading-9"><a href="http://localhost:3000/accounts/show">Manage users</a></h3>
+        </button>
+      </div>
+<% end %>
+      <div class="log-out">
+        <button>
+          <p class="log-out-sub"> <img src="<%=image_path("Vector (11).png") %>" alt="" class="" /></p>
+
+          <h3 class="logout-1" ><%=link_to "log out", destroy_account_session_url ,method: :delete %></h3>
+        </button>
+      </div>
+    </div>
+<section class="design-5">
+<div class="all-articles">
+
+  <div class="drop-give">
+    <div class="every-article-1">
+      <div class="article-2">
+        <%= image_tag "Vector.png"%><h6> <%= @article.title  %></h6>
+
+      </div>
+    </div>
+
+<%#= @article.title %>
+    <div class="time-check">
+  <%= time_ago_in_words(@article.created_at) %> ago
+    </div>
+    <div class="body-1">
+      <h6><%= @article.body %></h6>
+    </div>
+    <div class="lenght-increment">
+      <h6> <%=@article.likes.length %>Likes</h6>
+      <h6>.<%=@article.comments.length %>comment</h6>
+    </div>
+
+
+<%#= @article.body %>
+<!--    <div class="like-comment">-->
+
+<!--  <form action="/likes" method="post">-->
+<!--    <input type="hidden" name="authenticity_token" value="<%#=form_authenticity_token %>">-->
+<!--    <input type="hidden" name="like[article_id]" value="<%#=@article.id %>">-->
+<!--    <input type="submit" value="like">-->
+<!--  </form>-->
+
+<!--    <ul>-->
+<!--      <li><%#= image_tag "Vector (2).png",class:''%><a  href=#Like>Like</a></li>-->
+<!--      <li><%#= image_tag "Vector (3).png",class:''%><a  href=#Comments></a>Comments</li>-->
+<!--    </ul>-->
+<!--    </div>-->
+    <div class="like-comment">
+      <ul class="form-ul">
+
+        <li class="all-li"><%= image_tag "Vector (2).png",class:''%> <form action="/likes" method="post">
+          <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token %>">
+          <input type="hidden" name="like[article_id]" value="<%=@article.id %>">
+          <input type="submit" value="like">
+        </form></li>
+
+        <li><%= image_tag "Vector (3).png",class:''%><a  href=#Comments></a>Comments</li>
+      </ul>
+    </div>
+
+
+    <div class="render">
+
+<%= form_with model: [@article, @article.comments.build] do |form| %>
+
+
+    <div class="local-area">
+      <%= form.text_field :commenter, value: current_account.first_name, type: :hidden%>
+      <p class="form-text"> <%= form.text_area :body %></p>
+      <p class="submit-comment"> <%#= form.submit 'Comment'  %>
+      <%= button_tag  type: 'submit' do %>
+        <%= image_tag 'Vector (7).png' %>
+      <% end %>
+      </p>
+    </div>
+    </div>
+</div>
+        <h5 class="comment-3">Comment:</h5>
+
+
+
+    <%= render @article.comments.order(created_at: :desc) %>
+        <%#= form.text_area :body %>
+    <%#= form.submit %>
+
+<% end %>
+
+
+  </div>
+</section>
+  </nav>
+</section>
+

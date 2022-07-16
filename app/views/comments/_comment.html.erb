@@ -1,0 +1,41 @@
+<hr>
+<div class="all-method">
+<div class="info-3">
+  <%= image_tag "Vector.png"%> <%=comment.commenter %>
+<br>
+  <span style="float: right;">
+  <div class="dropdown-container" tabindex="-1">
+    <div class="three-dots"></div>
+    <div class="dropdown">
+
+      <%= link_to "delete", [comment.article, comment], data: {
+        turbo_method: :delete,
+      } %>
+      <a href="http://localhost:3000/articles/<%=comment.article.id%>/comments/<%=comment.id %>/edit" methods="post">edit</a>
+<!--      <div><a><%#= link_to 'Destroy', article_path(article), method: :delete,  data: {confirm: "Are you sure?"}  %></a></div>-->
+
+    </div>
+  </div>
+</span>
+
+  <p class="form-nav">  <%= comment.body%> </p>
+</div>
+
+    <%#end %>
+
+<!--  <a href="http://localhost:3000/articles/<%#=comment.article.id%>/comments/<%#=comment.id %>" methods="delete">delete</a>-->
+<!--    <a href="http://localhost:3000/articles/<%#=comment.article.id%>/comments/<%#=comment.id %>/edit" methods="post">edit</a>-->
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+

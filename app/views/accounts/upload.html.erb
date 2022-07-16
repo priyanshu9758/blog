@@ -1,0 +1,142 @@
+<section class="all-design">
+  <section class="container">
+    <nav class="navbar">
+      <div class="image-maze">
+        <div class="img-1">
+          <%= image_tag "Vector.png",class:''%>
+        </div>
+        <div class="maze-man">
+          <h3 class="maze-4">Maze</h3>
+        </div>
+      </div>
+
+      <div class="search-bar">
+
+        <button type="button" class="btn btn-default btn-sm">
+          <span class="glyphicon glyphicon-search"></span> <p class="search-3">Search for something here...</p>
+        </button>
+      </div>
+      <div class="full-image">
+
+
+        <div class="name-image">
+
+          <%= image_tag "Rectangle 14 (1).png",class:''%>
+          <p class="admin-name"> <%=current_account.roles.first.name%></p>
+          <h3 class="name-1"> <%=current_account.first_name%></h3>
+        </div>
+      </div>
+
+    </nav>
+  </section>
+  <!--article-area-->
+
+  <nav class="check-design">
+    <div class="profile-4">
+      <div class="feed-1">
+        <button>
+          <p class="feed-sub"> <img src="<%=image_path("Vector (20).png") %>" alt="" class="" /></p>
+          <a href="http://localhost:3000/"><h3>Feed</h3></a></button>
+      </div>
+
+      <div class="profile-1">
+        <button>
+          <p class="profile-sub">  <img src="<%=image_path("Vector (12).png") %>" alt="" class="" /></p>
+          <h3 class="heading-8">  <a href=#profile>Profile</a></h3>
+        </button>
+      </div>
+      <div class="manage-1">
+        <button>
+          <p class="manage-sub">  <img src="<%=image_path("Vector (16).png") %>" alt="" class="" /></p>
+          <h3 class="heading-9"><a href="http://localhost:3000/accounts">Manage users</a></h3>
+        </button>
+      </div>
+      <div class="manage-2">
+        <button>
+          <p class="reports-sub">  <img src="<%=image_path("Vector (24).png") %>" alt="" class="" /></p>
+          <h3 class="heading-9"><a href="http://localhost:3000/accounts_reports_all">Reports</a></h3>
+        </button>
+      </div>
+
+      <div class="log-out">
+        <button>
+          <p class="log-out-sub"> <img src="<%=image_path("Vector (11).png") %>" alt="" class="" /></p>
+
+          <h3><%=link_to "log out", destroy_account_session_url ,method: :delete %></h3>
+        </button>
+      </div>
+    </div>
+    <section class="design-10">
+<div class="upload-4">
+  <p class="upload-9">Upload user</p>
+
+  <div class="upload-file">
+    <%= form_tag import_accounts_path, name:'upload_file', multipart: true do %>
+      <button>
+      <div class="field-upload-1">
+
+        <img src="<%=image_path("noun-upload-4644112 1.png") %>" alt="" class="" />
+        <p class="select-file">Select file to upload</p>
+        <div class="level-3">
+
+        <%=  file_field_tag :file, accept:'.csv', onchange:("javascript: document.upload_file.submit()") %>
+
+        </div>
+      </div>
+    </button>
+
+  </div>
+</div>
+    </section>
+    <% end %>
+  </nav>
+  include sidekiq::account
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

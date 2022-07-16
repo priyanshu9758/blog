@@ -1,0 +1,12 @@
+wb = xlsx_package.workbook
+
+wb.add_worksheet(name: "Accounts") do |sheet|
+   sheet.add_row %w(Name Post Comment Like)
+
+     @account.each do |account|
+     if account.articles.length >= 10
+     sheet.add_row [account.first_name,account.articles.length,account.comments.length,account.likes.length]
+
+end
+  end
+end

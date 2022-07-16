@@ -1,0 +1,88 @@
+<section class="btn-design">
+  <HR class="line">
+  <div class="logo" >
+    <img src="<%=image_path("Vector.png") %>" alt="">
+    <h4 class="maze-6">Maze</h4>
+  </div>
+  <div class="checkpoint">
+
+  <div class="register-nav">
+<h2 style="color:white;">Create account</h2>
+  <h6 style="color:white;">For business,band and celebrity.</h6>
+
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+  <div class="inline-name">
+    <div class="first-name">
+    <%= f.label :first_name %><br>
+    <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
+    </div>
+    <div class="last-name">
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
+    </div>
+  </div>
+  <div class="number-name">
+    <div class="email-name">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    </div>
+
+  <div class="phone-name">
+    <%= f.label :Phone_number %><br />
+    <%= f.phone_field :Phone_number, autofocus: true, autocomplete: "Phone_number",maxlength:10%>
+  </div>
+  </div>
+
+  <div class="password-name">
+    <div class="length-name">
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "new-password" %>
+    </div>
+
+
+
+  <div class="confirmation-name">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+
+  </div>
+  </div>
+
+<!--   <div class="remember-name">-->
+      <%#= f.check_box :remember_me %>
+      <%#= f.label :remember_me %>
+<!--    </div>-->
+    <div class="nav-5">
+
+
+<!--<div class="remember-3">-->
+    <%#= f.check_box :remember_me %>
+    <%#= f.label :remember_me %>
+<!--</div>-->
+<!--    <div class="actions">-->
+  </div>
+      <div class="login-2">
+    <%= f.submit "Login" %>
+      </div>
+      <div class="already">
+        <p class="render-links">   Already have an account? <%= render "devise/shared/links" %></p>
+      </div>
+<!--  </div>-->
+
+<% end %>
+    </div>
+
+<%#= render "devise/shared/links" %>
+  </div>
+<!--    <div class="remember-name">-->
+      <%#= .check_box :remember_me %>
+      <%#= f.label :remember_me %>
+<!--    </div>-->
+
+  </div>
+</section>

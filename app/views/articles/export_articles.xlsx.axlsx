@@ -1,0 +1,8 @@
+wb = xlsx_package.workbook
+wb.add_worksheet(name: "Accounts") do |sheet|
+
+   sheet.add_row %w(description  comments likes)
+  @articles.each do |article|
+    sheet.add_row [article.body, article.comments.length,article.likes.length]
+  end
+end

@@ -1,0 +1,31 @@
+<!--<%#= form.label :status %><br>-->
+<%#= form.select :status, ['public', 'private', 'archived'], selected: 'public' %>
+
+<%= form_with model: [ article, article.comments.build ], local: false do |form| %>
+<!--  <%#= form.label :status %><br>-->
+  <%#= form.select :status, ['public', 'private', 'archived'], selected: 'public' %>
+
+  <%= form.text_field :commenter, value: current_account.first_name, type: :hidden%>
+
+<!--     <%#= form.label :body %><br>-->
+    <div class="info-1">
+    <p class="form-nav-1"> <%= form.text_area :body %></p>
+
+<!--  <p>-->
+<!--    <%#= form.label :status %><br>-->
+    <%#= form.select :status, ['public', 'private', 'archived'], selected: 'public' %>
+<!--  </p>-->
+<div class="comment-area">
+  <%#= form.submit 'Comment'  %>
+<%= button_tag  type: 'submit' do %>
+  <%= image_tag 'Vector (7).png' %>
+  <% end %>
+</div>
+  </div>
+  <h5 class="heading-9">Comment</h5>
+
+
+
+<% end %>
+<hr>
+

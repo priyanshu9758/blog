@@ -1,0 +1,260 @@
+<section class="all-design">
+  <section class="container">
+    <nav class="navbar">
+      <div class="image-maze">
+        <div class="img-1">
+          <%= image_tag "Vector.png",class:''%>
+        </div>
+        <div class="maze-man">
+          <h3 class="maze-4">Maze</h3>
+        </div>
+      </div>
+
+      <div class="search-bar">
+
+        <button type="button" class="btn btn-default btn-sm">
+          <span class="glyphicon glyphicon-search"></span> <p class="search-3">Search for something here...</p>
+        </button>
+
+      </div>
+      <div class="full-image">
+        <div class="name-image">
+
+          <%= image_tag "Rectangle 14 (1).png",class:''%>
+          <p class="admin-name"> <%=current_account.roles.first.name%></p>
+          <h3 class="name-1"> <%=current_account.first_name%></h3>
+        </div>
+
+
+      </div>
+
+    </nav>
+  </section>
+  <!--article-area-->
+
+  <nav class="check-design">
+    <div class="profile-4">
+      <div class="feed-1">
+        <button>
+          <p class="feed-sub"> <img src="<%=image_path("Vector (20).png") %>" alt="" class="" /></p>
+          <a href="http://localhost:3000/"><h3>Feed</h3></a></button>
+      </div>
+
+      <div class="profile-1">
+        <button>
+          <p class="profile-sub">  <img src="<%=image_path("Vector (12).png") %>" alt="" class="" /></p>
+          <h3 class="heading-8">  <a href=#profile>Profile</a></h3>
+        </button>
+      </div>
+      <div class="manage-1">
+        <button>
+          <p class="manage-sub">  <img src="<%=image_path("Vector (16).png") %>" alt="" class="" /></p>
+          <h3 class="heading-9"><a href="http://localhost:3000/accounts">Manage users</a></h3>
+        </button>
+      </div>
+      <div class="manage-2">
+        <button>
+          <p class="reports-sub">  <img src="<%=image_path("Vector (24).png") %>" alt="" class="" /></p>
+          <h3 class="heading-9"><a href="http://localhost:3000/accounts_reports_all">Reports</a></h3>
+        </button>
+      </div>
+
+      <div class="log-out">
+        <button>
+          <p class="log-out-sub"> <img src="<%=image_path("Vector (11).png") %>" alt="" class="" /></p>
+
+          <h3><%=link_to "log out", destroy_account_session_url ,method: :delete %></h3>
+        </button>
+      </div>
+    </div>
+    <section class="design-10">
+      <div class="all-download">
+<div class="download-1">
+  <div class="download-1-image">
+<div class="top-image">
+   <img src="<%=image_path("carbon_report.png") %>" alt="" class="" />
+</div>
+  </div>
+  <h4 class="some-1">All users</h4>
+  <p class="count">Posts, comments and likes count</p>
+  <div class="form-check">
+    <div class="check-form">
+      <%= form_with url: reports_all_url, method: :get do |f| %>
+        <div class="checked-6">
+<div class="checked-7">
+        <%= f.radio_button :type, "xlsx",checked: true, id:"allaccxlsx"%>
+        <%= f.label :axlsx, "Excel" %>
+</div>
+        <%= f.radio_button :type, ".CSV", id:"allacccsv"%>
+        <%= f.label :csv, ".CSV" %>
+        </div>
+        <div class="button-special">
+          <%= f.submit "Download", id: "download-btn-all" %>
+        </div>
+      <% end %>
+      </div>
+  </div>
+
+</div>
+      </div>
+<div class="middle-1">
+  <div class="download-1-image">
+    <div class="top-image">
+      <img src="<%=image_path("carbon_report.png") %>" alt="" class="" />
+    </div>
+
+  </div>
+  <h4 class="some-1">All users</h4>
+  <p class="count">Having more than 10 posts.users</p>
+  <div class="form-check-1">
+    <div class="check-form-1">
+      <%= form_with url: reports_acc_url, method: :get do |f| %>
+<div class="checked-1">
+  <div class="checked-2">
+        <%= f.radio_button :type, "xlsx",checked: true, id:"accxlsx"%>
+        <%= f.label :xslx, "Excel" %>
+  </div>
+        <%= f.radio_button :type, "csv" ,id:"acccsv"%>
+        <%= f.label :csv, ".CSV" %>
+</div>
+        <div class="button-special-1">
+          <%= f.submit "Download", class: "btn-normal-b", id: "download-btn" %>
+        </div>
+
+      <%end %>
+  </div>
+
+</div>
+
+</div>
+
+<div class="middle-3">
+  <div class="download-1-image">
+    <div class="top-image">
+      <img src="<%=image_path("carbon_report.png") %>" alt="" class="" />
+    </div>
+  </div>
+  <h4 class="some-2">Postwise Report</h4>
+  <p class="count">Title/description, comments, likes</p>
+  <div class="form-check">
+    <div class="check-form">
+      <%= form_with url: reports_post_url, method: :get do |f| %>
+        <div class="checked-3">
+<div class="checked-4">
+        <%= f.radio_button :type, "xlsx",checked: true,id:"postxlsx"%>
+        <%= f.label :axlsx, "Excel" %>
+</div>
+        <%= f.radio_button :type, "csv",id:"postcsv"%>
+        <%= f.label :csv, ".CSV" %>
+        </div>
+        <div class="button-special-2">
+          <%= f.submit "Download", class: "btn-normal-b", id: "download-btn-p" %>
+        </div>
+      <%end %>
+  </div>
+
+</div>
+
+
+
+
+
+</div>
+
+    </section>
+  </nav>
+
+
+</section>
+<script>
+    let csvall = document.getElementById('allacccsv');
+    let xlsxall = document.getElementById('allaccxlsx');
+    let button_all = document.getElementById('download-btn-all');
+    button_all.onclick = downloadFiles;
+    function downloadFiles() {
+        if (csvall.checked){
+            window.open(`/accounts_downloads.csv`);
+    }else if(xlsxall.checked) {
+            window.open(`/accounts_downloads.xlsx`);
+        } else {
+            alert("Please check one of the options first.");
+        }
+    }
+
+    let csv = document.getElementById('acccsv');
+    let xlsx = document.getElementById('accxlsx');
+    let button = document.getElementById('download-btn');
+    button.onclick = downloadFile;
+    function downloadFile() {
+        if(csv.checked) {
+            window.open(`/accounts_download.csv`);
+        }else if(xlsx.checked) {
+            window.open(`/accounts_download.xlsx`);
+        } else {
+            alert("Please check one of the options first.");
+        }
+    }
+
+    let csvp = document.getElementById('postcsv');
+    let xlsxp = document.getElementById('postxlsx');
+    let buttonp = document.getElementById('download-btn-p');
+    buttonp.onclick = downloadFilePost;
+    function downloadFilePost() {
+        if(csvp.checked) {
+            window.open(`/articles_downloads.csv`);
+        }else if(xlsxp.checked) {
+            window.open(`/articles_downloads.xlsx`);
+        } else {
+            alert("Please check one of the options first.");
+        }
+    }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,23 @@
+
+<%= form_with model: @article do |form| %>
+  <div>
+
+
+    <%= form.text_field :title, class: "style-title", value: current_account.first_name ,type: :hidden  %>
+  </div>
+  <div class="body-3">
+
+    <%= image_tag "Vector.png"%>
+    <%= form.text_area :body,placeholder: 'Whats happening?',  class: "style-body"%><br>
+  </div>
+  <div>
+    <%= form.submit class: "style-post", value:"Post"%>
+
+  </div>
+  <div>
+<!--    <p class="label-1"> <%#= form.label :status %><br></p>-->
+    <p class="form-1"> <%= form.select :status, ['public', 'private'], selected: 'public' %></p>
+  </div>
+
+
+<% end %>
